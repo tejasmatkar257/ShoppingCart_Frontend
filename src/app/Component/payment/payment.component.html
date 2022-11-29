@@ -1,85 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
+<section class="vh-75">
+  <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src=".\assets\Image\Logo.png" class="img-fluid" alt="Sample image" style="width: 650px;height: 200px;">
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form [formGroup]="Paymentform" (ngSubmit)="onSubmit()">
+                  <br>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Form</title>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-</head>
+                  <div class="form-group">
+                      <div *ngIf="Fullname?.touched && Fullname?.invalid">
+                          <span>Fullname is required.</span></div>
+                      <input formControlName="FullName" type="text" id="FullName" class="form-control form-control-lg" placeholder="FullName" />
+                      <label class="form-label" for="form3Example3"></label>
 
-<body>
-    <div class="wrapper">
-        <h2>Payment</h2>
-        <form method="POST">
-            <h4>Shipping Details</h4>
-            <div class="input-group">
-                <div class="input-box">
-                    <input type="text" placeholder="Full Name" required class="name">
-                    <i class="fa fa-user icon"></i>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-box">
-                    <h4>Payment Details</h4>
-                    <input type="radio" name="pay" id="bc1" checked class="radio">
-                    <label for="bc1"><span><i class="fa fa-credit-card"></i> Debit Card</span></label>
-                    <input type="radio" name="pay" id="bc2" class="radio">
-                    <label for="bc2"><span> Pay on delivery </span></label>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-box">
-                    <input type="tel" placeholder="Amount" class="name">
-                    <i class="fa fa-user icon"></i>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-box">
-                    <input type="tel" placeholder="Card Number" class="name">
-                    <i class="fa fa-user icon"></i>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-box">
-                    <input type="tel" placeholder="Card CVV" class="name">
-                    <i class="fa fa-user icon"></i>
-                </div>
-                <div class="input-box">
-                    <select>
-                        <option>exp month</option>
-                        <option>jan</option>
-                        <option>feb</option>
-                        <option>march</option>
-                        <option>april</option>
-                        <option>may</option>
-                        <option>june</option>
-                        <option>july</option>
-                        <option>aug</option>
-                        <option>sept</option>
-                        <option>oct</option>
-                        <option>nov</option>
-                        <option>dec</option>
-                    </select>
-                    <select>
-                        <option>exp year</option>
-                        <option>2020</option>
-                        <option>2021</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                        <option>2024</option>
-                        <option>2025</option>
-                        <option>2026</option>
-                    </select>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-box">
-                    <button type="submit" routerLink="/order-successful">PAY NOW</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</body>
+                  </div>
 
-</html>
+                  <div class="form-group">
+                      <div *ngIf="TransactionAmount?.touched && TransactionAmount?.invalid">
+                          <span>TransactionAmount is required.</span></div>
+                      <input formControlName="TransactionAmount" type="text" id="TransactionAmount" class="form-control form-control-lg" placeholder="TransactionAmount" />
+                      <label class="form-label" for="form3Example3"></label>
+
+                  </div>
+
+
+                  <div class="form-group">
+                      <div *ngIf="Mode?.touched && Mode?.invalid">
+                          <span>Mode is required.</span>
+                      </div>
+                      <input formControlName="Mode" type="text" id="Mode" class="form-control form-control-lg" placeholder="Mode" />
+                      <label class="form-label" for="form3Example3"></label>
+
+                  </div>
+
+                  <div class="form-group">
+                      <div *ngIf="Cardnumber?.touched && Cardnumber?.invalid">
+                          <span>Cardnumber is required.</span>
+                      </div>
+                      <input formControlName="Cardnumber" type="text" id="Cardnumber" class="form-control form-control-lg" placeholder="Enter your Cardnumber" />
+                      <label class="form-label" for="form3Example3"></label>
+
+                  </div>
+
+                  <!-- State  input -->
+                  <div class="form-group">
+                      <div *ngIf="CardCVV?.touched && CardCVV?.invalid">
+                          <span>CardCVV is required.</span>
+                      </div>
+                      <input formControlName="CardCVV" type="text" id="CardCVV" class="form-control form-control-lg" placeholder="Enter your CardCVV" />
+                      <label class="form-label" for="form3Example3"></label>
+
+                  </div>
+
+                  <div class="text-center text-lg-start mt-4 pt-2">
+                      <button type="submit" class="btn btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" [disabled]="!Paymentform.valid">Pay</button>
+                  </div>
+
+              </form>
+          </div>
+      </div>
+  </div>
+</section>

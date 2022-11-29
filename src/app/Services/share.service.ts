@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs'; 
+import { map, Observable } from 'rxjs';
 import { UserDetails } from '../Models/UserDetails.model';
 import { Product } from '../Models/Product.model';
 import cart from '../Models/cart.model';
 import { feedback } from '../Models/feedback.model';
+import {Payment} from '../Models/Payment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class ShareService {
   public products :Product[];
   public product:Product;
   public cart:cart[];
+
   readonly APIUrl ="https://localhost:44339"
   constructor(private http:HttpClient) { }
 GetAllUserDetails():Observable<any[]>{
@@ -70,6 +72,14 @@ GetAllFeedDetails():Observable<feedback[]>
 addFeedDetails(val:any){
   console.log(val);
   return this.http.post<feedback>(this.APIUrl+'/api/Feedback/SaveFeedDetails',val)
+}
+
+addPayment(val:any) {
+  console.log(val);
+  return this.http.post<Payment>(this.APIUrl+'api/Payment/SaveTransaction',val);
+}
+GetAllPayment():Observable<Payment[]>{
+  return this.http.get<any[]>(this.APIUrl+'/api/Payment/GetAllTransaction')
 }
 }
 

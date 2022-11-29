@@ -1,9 +1,10 @@
+
 export interface Payment{
-    transactionId:number;
-    Fullname:string;
-    transactionAmount:number;
-    mode:string;
-    cardnumber:number;
-    cardcvv:number;
+  TransactionId:number;
+   Fullname:string;
+   TransactionAmount:number;
+   Mode:string;
+   Cardnumber:number;
+   CardCVV:number;
 
 }

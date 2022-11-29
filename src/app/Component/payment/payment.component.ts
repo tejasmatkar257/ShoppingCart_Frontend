@@ -19,17 +19,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class PaymentComponent implements OnInit {
   Paymentform=new FormGroup({
 
-    FullName:new FormControl('', Validators.required),
-    transactionAmount:new FormControl('',),
+    Fullame:new FormControl('', Validators.required),
+    TransactionAmount:new FormControl('',),
     Cardnumber : new FormControl('',[Validators.required , Validators.minLength(16) , Validators.maxLength(16)]),
     CardCVV : new FormControl('',[Validators.required , Validators.minLength(3) , Validators.maxLength(3)]),
     Mode: new FormControl('',),
   });
   submitted=false;
-  get FullName() {
+  get Fullname() {
     return this.Paymentform.get('Fullname');
   }
-  get transactionAmount() {
+  get TransactionAmount() {
     return this.Paymentform.get('TransactionAmount');
   }
   get Mode() {
@@ -58,12 +58,12 @@ export class PaymentComponent implements OnInit {
     if (this.Paymentform.invalid) {
       return;
   }
-  this.shared.addUserDetails(this.Paymentform.value).subscribe((result)=>{
-  
+  this.shared.addPayment(this.Paymentform.value).subscribe((result)=>{
+
 });
 alert("Payment Successful");
   this.Paymentform.reset();
 }
-  
+
 
 }
